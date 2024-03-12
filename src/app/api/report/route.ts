@@ -1,4 +1,4 @@
-export async function POST(request: Request) {
+export async function OPTIONS(request: Request) {
   try {
     const report = (await request.json())["csp-report"];
 
