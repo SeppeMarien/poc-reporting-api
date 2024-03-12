@@ -11,7 +11,7 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     CSP_REPORT_ONLY: z.boolean().optional(),
-    SENTRY_URL_CSP: z.string().optional(),
+    REPORT_ENDPOINT: z.string().optional(),
   },
 
   /**
@@ -21,7 +21,7 @@ export const env = createEnv({
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     CSP_REPORT_ONLY: process.env.CSP_REPORT_ONLY === "true",
-    SENTRY_URL_CSP: process.env.SENTRY_URL_CSP,
+    REPORT_ENDPOINT: process.env.REPORT_ENDPOINT,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

@@ -25,12 +25,12 @@ const genereateCsp = () => {
       ],
       "base-uri": [NONE],
       "object-src": [NONE],
-      "style-src": [UNSAFE_INLINE, SELF],
+      "style-src": [NONE],
       "img-src": [SELF, "data:"],
       "frame-ancestors": [NONE],
-      // 'report-to': 'sentry-reporting',
+      "report-to": "report-endpoint",
     },
-    reportUri: env.SENTRY_URL_CSP,
+    reportUri: env.REPORT_ENDPOINT,
   });
 
   return { csp, nonceKey };

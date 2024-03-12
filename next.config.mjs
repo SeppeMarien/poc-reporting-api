@@ -1,4 +1,6 @@
 await import("./src/env.js");
+import { env } from "./src/env.js";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers() {
@@ -37,18 +39,18 @@ const nextConfig = {
             value: "max-age=31536000; includeSubDomains; preload",
           },
           // TODO: enable reporting through Reporting API - not working atm
-          // {
-          //   key: 'Reporting-Endpoints',
-          //   value: `sentry-reporting="${env.SENTRY_URL_CSP}"`,
-          // },
-          // {
-          //   key: 'Report-To',
-          //   value: JSON.stringify({
-          //     group: 'sentry-reporting',
-          //     'max-age': 1000000,
-          //     endpoints: [{ url: env.SENTRY_URL_CSP }],
-          //   }),
-          // },
+          {
+            key: "Reporting-Endpoints",
+            value: `report-endpoint="${env.REPORT_ENDPOINT}"`,
+          },
+          {
+            key: "Report-To",
+            value: JSON.stringify({
+              group: "report-endpoint",
+              "max-age": 1000000,
+              endpoints: [{ url: env.REPORT_ENDPOINT }],
+            }),
+          },
         ],
       },
     ];
